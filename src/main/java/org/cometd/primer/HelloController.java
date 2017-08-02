@@ -32,7 +32,7 @@ public class HelloController {
         private final long answer;
     }
 
-    // SQL sample
+    
     @RequestMapping("calc")
     Result calc(@RequestParam int left, @RequestParam int right) {
         MapSqlParameterSource source = new MapSqlParameterSource()

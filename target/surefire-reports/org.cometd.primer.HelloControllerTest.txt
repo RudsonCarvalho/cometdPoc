@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.cometd.primer.HelloControllerTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.055 sec - in org.cometd.primer.HelloControllerTest
