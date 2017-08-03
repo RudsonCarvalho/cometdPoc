@@ -27,9 +27,13 @@ public class App {
 	public static final int HTTP_PORT = 8080;
 	public static final int HTTPS_PORT = 8443;
 	public static final String CONTEXT_PATH = "/app";
-	private static final String KEY_STORE = "/src/app/resources/keystore.jks";
-	private static final String KEY_STORE_PASS = "storepwd";
-	private static final String KEY_STORE_MANAGER_PASS = "keypwd";
+	
+	//private static final String KEY_STORE = "/src/app/resources/keystore.jks";
+	//private static final String KEY_STORE_PASS = "storepwd";
+	//private static final String KEY_STORE_MANAGER_PASS = "keypwd";
+	
+	private static final String cometdURLMapping = "/cometd/*";
+	private static final int cometdTimeOut = 15000;
 	
 	
     public static void main(String[] args) throws Exception {
@@ -81,15 +85,21 @@ public class App {
 
         // Setup the default servlet to serve static files.
         context.addServlet(DefaultServlet.class, "/");
+        
+       
 
         // Setup the CometD servlet.
-        String cometdURLMapping = "/cometd/*";
+       
         ServletHolder cometdServletHolder = new ServletHolder(CometDServlet.class);
         context.addServlet(cometdServletHolder, cometdURLMapping);
         // Required parameter for WebSocket transport configuration.
         cometdServletHolder.setInitParameter("ws.cometdURLMapping", cometdURLMapping);
+        
         // Optional parameter for BayeuxServer configuration.
         cometdServletHolder.setInitParameter("timeout", String.valueOf(15000));
+
+        
+        
         // Start the CometD servlet eagerly to show up in JMX.
         cometdServletHolder.setInitOrder(1);
 
