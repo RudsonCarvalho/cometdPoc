@@ -35,6 +35,7 @@ public class HelloController {
     
     @RequestMapping("calc")
     Result calc(@RequestParam int left, @RequestParam int right) {
+    	
         MapSqlParameterSource source = new MapSqlParameterSource()
                 .addValue("left", left)
                 .addValue("right", right);
